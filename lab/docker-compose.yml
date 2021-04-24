@@ -1,0 +1,191 @@
+version: '3.9'
+services:
+    cliente1:
+        image: sidneypio/debian-cliente
+        container_name: cliente1
+        hostname: cliente1
+        privileged: true
+        volumes:
+            - ./home/cliente1:/home
+            - ./conf/cliente1/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.10
+                ipv6_address: 2001:db8:2021:10::10
+
+
+    cliente2:
+        image: sidneypio/debian-cliente
+        container_name: cliente2
+        hostname: cliente2
+        privileged: true
+        volumes:
+            - ./home/cliente2:/home
+            - ./conf/cliente2/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.20
+                ipv6_address: 2001:db8:2021:10::20
+
+
+    R1:
+        image: sidneypio/alpine-roteador
+        container_name: R1
+        hostname: R1
+        privileged: true
+        volumes:
+            - "./conf/roteador/quagga:/etc/quagga"
+            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+        networks:
+            redeR1R2:
+                ipv4_address: 10.10.12.10
+                ipv6_address: 2001:db8:2021:12::10
+            redeR1R4:
+                ipv4_address: 10.10.14.10
+                ipv6_address: 2001:db8:2021:14::10
+            redeCliente:
+                ipv4_address: 10.10.10.100  
+                ipv6_address: 2001:db8:2021:10::100
+    R2:
+        image: sidneypio/alpine-roteador
+        container_name: R2
+        hostname: R2
+        privileged: true
+        volumes:
+            - "./conf/roteador/quagga:/etc/quagga"
+            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+        networks:
+            redeR1R2:
+                ipv4_address: 10.10.12.20
+                ipv6_address: 2001:db8:2021:12::20
+            redeR2R3:
+                ipv4_address: 10.10.23.20 
+                ipv6_address: 2001:db8:2021:23::20 
+
+    R3:
+        image: sidneypio/alpine-roteador
+        container_name: R3
+        hostname: R3
+        privileged: true
+        volumes:
+            - "./conf/roteador/quagga:/etc/quagga"
+            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+        networks: 
+            redeR2R3:
+                ipv4_address: 10.10.23.30 
+                ipv6_address: 2001:db8:2021:23::30
+            redeR4R3:
+                ipv4_address: 10.10.43.30 
+                ipv6_address: 2001:db8:2021:43::30
+            redeServidor:
+                ipv4_address: 10.10.100.100 
+                ipv6_address: 2001:db8:2021:100::100
+
+    R4:
+        image: sidneypio/alpine-roteador
+        container_name: R4
+        hostname: R4
+        privileged: true
+        volumes:
+            - "./conf/roteador/quagga:/etc/quagga"
+            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+        networks:
+            redeR4R3:
+                ipv4_address: 10.10.43.40 
+                ipv6_address: 2001:db8:2021:43::40
+            redeR1R4:
+                ipv4_address: 10.10.14.40
+                ipv6_address: 2001:db8:2021:14::40             
+
+    nginx:
+        image: sidneypio/debian-nginx
+        container_name: nginx
+        hostname: nginx
+        privileged: true
+        volumes:
+            - ./home/nginx:/home
+            - ./conf/nginx/conf.d:/etc/nginx/conf.d
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.10 
+                ipv6_address: 2001:db8:2021:100::10 
+
+    mqttServer:
+        image: eclipse-mosquitto
+        container_name: mqttServer
+        hostname: mqttServer
+        privileged: true
+        volumes:
+            - ./conf/mqttServer/mosquitto.conf:/mosquitto/config/mosquitto.conf
+            - ./conf/mqttServer/data:/mosquitto/data
+            - ./conf/mqttServer/log:/mosquitto/log            
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.20 
+                ipv6_address: 2001:db8:2021:100::20 
+
+    apache1:
+        image: sidneypio/debian-apache-php
+        container_name: apache1
+        hostname: apache1
+        privileged: true
+        volumes:
+            - ./home/apache1:/home
+            - ./conf/apache1/html:/var/www/html
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.30 
+                ipv6_address: 2001:db8:2021:100::30 
+            
+    apache2:
+        image: sidneypio/debian-apache-php
+        container_name: apache2
+        hostname: apache2
+        privileged: true
+        volumes:
+            - ./home/apache2:/home
+            - ./conf/apache2/html:/var/www/html
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.40 
+                ipv6_address: 2001:db8:2021:100::40 
+
+
+
+networks:
+    redeCliente:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.10.0/24
+            - subnet: "2001:db8:2021:10::/64"
+    redeR1R2:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.12.0/24
+            - subnet: "2001:db8:2021:12::/64"
+    redeR2R3:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.23.0/24
+            - subnet: "2001:db8:2021:23::/64"
+    redeR1R4:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.14.0/24
+            - subnet: "2001:db8:2021:14::/64"
+    redeR4R3:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.43.0/24
+            - subnet: "2001:db8:2021:43::/64"
+    redeServidor:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.100.0/24
+            - subnet: "2001:db8:2021:100::/64"

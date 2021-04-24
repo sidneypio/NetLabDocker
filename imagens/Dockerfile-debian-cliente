@@ -1,0 +1,27 @@
+FROM debian:buster
+
+LABEL version="1.0"
+LABEL description="Imagem Debian para laboratorio de INF534"
+LABEL maintainer="sidneypio@gmail.com"
+
+RUN apt update \
+    && apt upgrade -y\
+    && apt install -y\
+            apt-utils aptitude \
+            procps \
+            net-tools inetutils-ping iptables \
+            bind9-host dnsutils  \
+            traceroute \
+            htop \
+            tcpdump \
+            netcat telnet \
+            links man \
+            curl wget \
+            nano vim \
+            nmap \
+            mosquitto-clients 
+
+CMD /usr/local/bin/inicio.sh
+
+    
+        

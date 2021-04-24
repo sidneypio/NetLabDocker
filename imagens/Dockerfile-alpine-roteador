@@ -1,0 +1,11 @@
+FROM alpine
+
+LABEL version="1.0"
+LABEL description="Image for routing tests"
+LABEL maintainer="sidneypio@gmail.com"
+
+RUN apk update && apk upgrade && apk add bash tcpdump htop nano quagga quagga-doc 
+
+CMD /usr/local/bin/inicio.sh
+
+        

@@ -1,0 +1,3 @@
+
+# Exemplo de comando para se inscrever no topico novidades
+mosquitto_pub -h 10.10.100.20 -p 1883 -t novidades -m "Ola via MQTT !!!"

@@ -1,0 +1,16 @@
+FROM php:apache-buster
+
+RUN apt update \
+    && apt upgrade -y\
+    && apt install -y\
+            apt-utils aptitude \
+            procps iproute2\
+            net-tools inetutils-ping iptables \
+            traceroute \
+            htop \
+            tcpdump \
+            netcat telnet 
+
+
+    
+        
