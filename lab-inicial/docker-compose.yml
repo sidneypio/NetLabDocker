@@ -1,0 +1,58 @@
+version: '3.9'
+services:
+    cliente1:
+        image: sidneypio/debian-cliente
+        container_name: cliente1
+        hostname: cliente1
+        privileged: true
+        volumes:
+            - ./home/cliente1:/home
+            - ./conf/cliente1/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.10
+                ipv6_address: 2001:db8:2021:10::10
+
+    R1:
+        image: sidneypio/alpine-roteador
+        container_name: R1
+        hostname: R1
+        privileged: true
+        volumes:
+            - "./conf/roteador/quagga:/etc/quagga"
+            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.100  
+                ipv6_address: 2001:db8:2021:10::100
+            redeServidor:
+                ipv4_address: 10.10.100.100
+                ipv6_address: 2001:db8:2021:100::100 
+   
+    nginx:
+        image: sidneypio/debian-nginx
+        container_name: nginx
+        hostname: nginx
+        privileged: true
+        volumes:
+            - ./home/nginx:/home
+            - ./conf/nginx/conf.d:/etc/nginx/conf.d
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.10 
+                ipv6_address: 2001:db8:2021:100::10 
+
+   
+networks:
+    redeCliente:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.10.0/24
+            - subnet: "2001:db8:2021:10::/64"
+    redeServidor:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.100.0/24
+            - subnet: "2001:db8:2021:100::/64"
