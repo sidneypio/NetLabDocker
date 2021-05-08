@@ -1,0 +1,50 @@
+frr version 7.5
+frr defaults traditional
+hostname R2
+log file /tmp/frr.log
+log syslog informational
+no ipv6 forwarding
+service integrated-vtysh-config
+!
+debug rip events
+debug rip packet
+debug rip zebra
+debug ripng events
+debug ripng packet
+debug ripng zebra
+!
+password inf500
+enable password inf500
+!
+interface eth0
+ ip rip receive version 2
+ ip rip send version 2
+!
+interface eth1
+ ip rip receive version 2
+ ip rip send version 2
+!
+interface eth2
+ ip rip receive version 2
+ ip rip send version 2
+!
+router rip
+ network eth0
+ network eth2
+ network eth1
+ redistribute kernel
+ redistribute connected
+ redistribute static
+ timers basic 10 60 20
+!
+router ripng
+ network eth2
+ network eth0
+ network eth1
+ redistribute kernel
+ redistribute connected
+ redistribute static
+ timers basic 10 60 20
+!
+line vty
+!

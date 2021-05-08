@@ -1,7 +1,7 @@
 FROM debian:buster
 
 LABEL version="1.0"
-LABEL description="Imagem Debian para laboratorio de INF534"
+LABEL description="Imagem Debian para clientes em INF534"
 LABEL maintainer="sidneypio@gmail.com"
 
 RUN apt update \
@@ -19,9 +19,9 @@ RUN apt update \
             curl wget \
             nano vim \
             nmap \
-            mosquitto-clients 
+            ftp \
+            mosquitto-clients \
+    && apt autoremove -y
+    
 
 CMD /usr/local/bin/inicio.sh
-
-    
-        

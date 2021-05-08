@@ -1,4 +1,4 @@
-FROM nginx
+FROM debian:buster
 
 RUN apt update \
     && apt upgrade -y\
@@ -10,7 +10,11 @@ RUN apt update \
             htop \
             tcpdump \
             netcat telnet \
+            frr frr-doc \
     && apt autoremove -y
+
+CMD /usr/local/bin/inicio.sh
+
 
 
     

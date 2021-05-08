@@ -29,36 +29,39 @@ services:
 
 
     R1:
-        image: sidneypio/alpine-roteador
+        #image: sidneypio/alpine-roteador
+        image: sidneypio/debian-roteador
         container_name: R1
         hostname: R1
         privileged: true
         volumes:
-            - "./conf/roteador/quagga:/etc/quagga"
-            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+            - ./home/R1:/home
+            - ./conf/roteador/frr-rip:/etc/frr
+            - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
         networks:
-            redeR1R2:
-                ipv4_address: 10.10.12.10
-                ipv6_address: 2001:db8:2021:12::10
-            redeR1R4:
-                ipv4_address: 10.10.14.10
-                ipv6_address: 2001:db8:2021:14::10
-            redeCliente:
+            redeCliente: # eth0
                 ipv4_address: 10.10.10.100  
                 ipv6_address: 2001:db8:2021:10::100
+            redeR1R2: #eth1
+                ipv4_address: 10.10.12.10
+                ipv6_address: 2001:db8:2021:12::10
+            redeR1R4: #eth2
+                ipv4_address: 10.10.14.10
+                ipv6_address: 2001:db8:2021:14::10
     R2:
         image: sidneypio/alpine-roteador
         container_name: R2
         hostname: R2
         privileged: true
         volumes:
-            - "./conf/roteador/quagga:/etc/quagga"
-            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+            - ./home/R2:/home
+            - ./conf/roteador/frr-rip:/etc/frr
+            - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
         networks:
-            redeR1R2:
+            redeR1R2: #eth0
                 ipv4_address: 10.10.12.20
                 ipv6_address: 2001:db8:2021:12::20
-            redeR2R3:
+            redeR2R3: #eth1
                 ipv4_address: 10.10.23.20 
                 ipv6_address: 2001:db8:2021:23::20 
 
@@ -68,16 +71,17 @@ services:
         hostname: R3
         privileged: true
         volumes:
-            - "./conf/roteador/quagga:/etc/quagga"
-            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+            - ./home/R3:/home
+            - ./conf/roteador/frr-rip:/etc/frr
+            - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
         networks: 
-            redeR2R3:
+            redeR2R3: #eth0
                 ipv4_address: 10.10.23.30 
                 ipv6_address: 2001:db8:2021:23::30
-            redeR4R3:
+            redeR4R3: #eth1
                 ipv4_address: 10.10.43.30 
                 ipv6_address: 2001:db8:2021:43::30
-            redeServidor:
+            redeServidor: #eth2
                 ipv4_address: 10.10.100.100 
                 ipv6_address: 2001:db8:2021:100::100
 
@@ -87,15 +91,17 @@ services:
         hostname: R4
         privileged: true
         volumes:
-            - "./conf/roteador/quagga:/etc/quagga"
-            - "./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh"
+            - ./home/R4:/home
+            - ./conf/roteador/frr-rip:/etc/frr
+            - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
         networks:
-            redeR4R3:
+            redeR1R4: #eth0
+                ipv4_address: 10.10.14.40 
+                ipv6_address: 2001:db8:2021:14::40  
+            redeR4R3: #eth1
                 ipv4_address: 10.10.43.40 
                 ipv6_address: 2001:db8:2021:43::40
-            redeR1R4:
-                ipv4_address: 10.10.14.40
-                ipv6_address: 2001:db8:2021:14::40             
+           
 
     nginx:
         image: sidneypio/debian-nginx
@@ -116,6 +122,7 @@ services:
         hostname: mqttServer
         privileged: true
         volumes:
+            - ./home/mqttServer:/home
             - ./conf/mqttServer/mosquitto.conf:/mosquitto/config/mosquitto.conf
             - ./conf/mqttServer/data:/mosquitto/data
             - ./conf/mqttServer/log:/mosquitto/log            

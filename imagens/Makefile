@@ -14,7 +14,10 @@ debian-apache-php: ## Criando a imagem para container com servidor apache+php ba
 
 debian-nginx: ## Criando a imagem para container com servidor nginx baseado em debian
 	docker build -t sidneypio/debian-nginx:latest . -f Dockerfile-debian-nginx 
-	
+
+debian-roteador: ## Criando a imagem para container roteador baseado em debian
+	docker build -t sidneypio/debian-roteador:latest . -f Dockerfile-debian-roteador
+
 push: ## Envia as imagens para o Docker Hub (opcional)
 	docker login
 	docker push sidneypio/debian-cliente:latest
