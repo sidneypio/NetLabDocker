@@ -1,10 +1,14 @@
 # NetLabDocker - Laboratório de redes usando docker
 * A ideia é criar um ambiente usando docker para estudo de protocolos de rede
 
+--- 
+
 # Quickstart
 ## Pre-requisitos
 * git (https://git-scm.com/)
-* docker (https://docs.docker.com/engine)
+* docker 
+  * Ambiente Linux: https://docs.docker.com/engine
+  * Ambiente Windows e Mac: https://docs.docker.com/desktop
 * docker-compose (https://docs.docker.com/compose)
 ## Clonando o repositorio
 ```
@@ -75,7 +79,9 @@ R1#
 make desliga
 ```
 
-# Estrutura
+---
+
+# Algumas informações sobre os diretórios
 ## imagens
 * Diretório para construir as imagens;
 * A construção de imagens é opcional, pois tenho uma versão das imagens geradas no Docker Hub (https://hub.docker.com/)
