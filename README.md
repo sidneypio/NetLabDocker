@@ -83,6 +83,7 @@ make desliga
 
 # Algumas informações sobre os diretórios
 * [lab](https://github.com/sidneypio/NetLabDocker/tree/main/lab#readme)
+* [lab-inicial](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inicial#readme)
 
 ## imagens
 * Diretório para construir as imagens;
@@ -92,8 +93,4 @@ make desliga
 cd imagens
 make all
 ```
-
-## lab-inicial
-* Exemplo de uma topologia simples com apenas 1 roteador;
-* bom para entender o funcionamento do laboratório, sem a complexidade da topologia
 
