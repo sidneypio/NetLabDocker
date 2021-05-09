@@ -1,7 +1,7 @@
 help: ## Mostrando o help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-all: debian-cliente alpine-roteador debian-apache-php debian-nginx ## Cria todas as imagens para o laboratorio
+all: debian-cliente alpine-roteador debian-apache-php debian-nginx debian-roteador## Cria todas as imagens para o laboratorio
 
 debian-cliente: ## Criando a imagem para container cliente baseado em debian
 	docker build -t sidneypio/debian-cliente:latest . -f Dockerfile-debian-cliente 
