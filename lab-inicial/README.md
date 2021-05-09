@@ -1,6 +1,7 @@
 # Laboratório de redes usando docker: lab-inicial
 
 * Exemplo de uma topologia simples com apenas 1 roteador
+* bom para entender o funcionamento do laboratório, sem a complexidade da topologia
 * para executar, basta digitar:
 ```
 make liga
