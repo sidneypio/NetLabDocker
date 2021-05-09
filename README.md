@@ -82,6 +82,7 @@ make desliga
 ---
 
 # Algumas informações sobre os diretórios
-* [lab](https://github.com/sidneypio/NetLabDocker/tree/main/lab#readme)
-* [lab-inicial](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inicial#readme)
+
 * [imagens](https://github.com/sidneypio/NetLabDocker/tree/main/imagens#readme)
+* [lab-inicial](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inicial#readme)
+* [lab](https://github.com/sidneypio/NetLabDocker/tree/main/lab#readme)
