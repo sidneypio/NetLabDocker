@@ -29,8 +29,8 @@ services:
 
 
     R1:
-        #image: sidneypio/alpine-roteador
-        image: sidneypio/debian-roteador
+        image: sidneypio/alpine-roteador
+        #image: sidneypio/debian-roteador
         container_name: R1
         hostname: R1
         privileged: true
@@ -50,6 +50,7 @@ services:
                 ipv6_address: 2001:db8:2021:14::10
     R2:
         image: sidneypio/alpine-roteador
+        #image: sidneypio/debian-roteador
         container_name: R2
         hostname: R2
         privileged: true
@@ -67,6 +68,7 @@ services:
 
     R3:
         image: sidneypio/alpine-roteador
+        #image: sidneypio/debian-roteador
         container_name: R3
         hostname: R3
         privileged: true
@@ -87,6 +89,7 @@ services:
 
     R4:
         image: sidneypio/alpine-roteador
+        #image: sidneypio/debian-roteador
         container_name: R4
         hostname: R4
         privileged: true

@@ -1,7 +1,6 @@
-frr version 7.5
+frr version 6.0.2
 frr defaults traditional
-hostname R2
-log file /tmp/frr.log
+hostname R1
 log syslog informational
 no ipv6 forwarding
 service integrated-vtysh-config
@@ -17,30 +16,30 @@ password inf500
 enable password inf500
 !
 interface eth0
- ip rip receive version 2
+ ip rip receive version 2 
  ip rip send version 2
 !
 interface eth1
- ip rip receive version 2
+ ip rip receive version 2 
  ip rip send version 2
 !
 interface eth2
- ip rip receive version 2
+ ip rip receive version 2 
  ip rip send version 2
 !
 router rip
- network eth0
- network eth2
- network eth1
+ timers basic 10 60 20
  redistribute kernel
  redistribute connected
  redistribute static
- timers basic 10 60 20
-!
-router ripng
  network eth2
  network eth0
  network eth1
+!
+router ripng
+ network eth1
+ network eth2
+ network eth0
  redistribute kernel
  redistribute connected
  redistribute static
