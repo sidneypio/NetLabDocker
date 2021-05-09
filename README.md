@@ -97,9 +97,9 @@ make all
 * R1, R2, R3 e R4
 * utilizam a imagem alpine-roteador (alpne com alguns pacotes tais como frr)
 * Utilizado o software frr (https://frrouting.org/)
-** utilizando rip e ripng (bem simples)
-** Arquivo de configuracao: /etc/frr/frr.conf
-** Comando de linha para configuração: vtysh
-** documentação para usuário: http://docs.frrouting.org/en/latest/
+  * utilizando rip e ripng (bem simples)
+  * Arquivo de configuracao: /etc/frr/frr.conf
+  * Comando de linha para configuração: vtysh
+  * documentação para usuário: http://docs.frrouting.org/en/latest/
 ### Servidores
 * nginx, apache e mosquitto
