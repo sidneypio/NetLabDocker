@@ -84,13 +84,4 @@ make desliga
 # Algumas informações sobre os diretórios
 * [lab](https://github.com/sidneypio/NetLabDocker/tree/main/lab#readme)
 * [lab-inicial](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inicial#readme)
-
-## imagens
-* Diretório para construir as imagens;
-* A construção de imagens é opcional, pois tenho uma versão das imagens geradas no Docker Hub (https://hub.docker.com/)
-### Para construir as imagens
-```
-cd imagens
-make all
-```
-
+* [imagens](https://github.com/sidneypio/NetLabDocker/tree/main/imagens#readme)
