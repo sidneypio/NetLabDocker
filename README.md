@@ -82,7 +82,7 @@ make desliga
 ---
 
 # Algumas informações sobre os diretórios
-* [lab](lab/Readme.md)
+* [lab](https://github.com/sidneypio/NetLabDocker/tree/main/lab#readme)
 
 ## imagens
 * Diretório para construir as imagens;
