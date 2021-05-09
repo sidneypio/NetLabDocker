@@ -82,6 +82,8 @@ make desliga
 ---
 
 # Algumas informações sobre os diretórios
+* [lab](lab/Readme.md)
+
 ## imagens
 * Diretório para construir as imagens;
 * A construção de imagens é opcional, pois tenho uma versão das imagens geradas no Docker Hub (https://hub.docker.com/)
@@ -95,18 +97,3 @@ make all
 * Exemplo de uma topologia simples com apenas 1 roteador;
 * bom para entender o funcionamento do laboratório, sem a complexidade da topologia
 
-## lab
-* Topologia mais elaborada, com dois containers cliente, 4 roteadores e 4 servidores (1 nginx, 2 apache e 1 mosquitto);
-### Clientes
-* cliente1 e cliente2
-* utilizam a imagem debian-cliente (debian buster com alguns pacotes como traceroute, tcpdump, netcat, curl, links, nmap, ftp)
-### Roteadores
-* R1, R2, R3 e R4
-* utilizam a imagem alpine-roteador (alpne com alguns pacotes tais como frr)
-* Utilizado o software frr (https://frrouting.org/)
-  * utilizando rip e ripng (bem simples)
-  * Arquivo de configuracao: /etc/frr/frr.conf
-  * Comando de linha para configuração: vtysh
-  * documentação para usuário: http://docs.frrouting.org/en/latest/
-### Servidores
-* nginx, apache e mosquitto
