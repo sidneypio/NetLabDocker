@@ -1,0 +1,70 @@
+version: '3.9'
+services:
+    matriz1:
+        image: sidneypio/alpine-roteador
+        container_name: matriz1
+        hostname: matriz1
+        privileged: true
+        volumes:
+            - ./home/matriz1:/home
+            - ./inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeMatriz:
+                ipv4_address: 10.10.10.10
+
+    matriz-gw:
+        image: sidneypio/alpine-roteador
+        container_name: matriz-gw
+        hostname: matriz-gw
+        privileged: true
+        volumes:
+            - ./home/matriz-gw:/home
+            - ./inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeMatrizFilial:
+                ipv4_address: 192.168.70.100
+            redeMatriz:
+                ipv4_address: 10.10.10.100
+
+    filial-gw:
+        image: sidneypio/alpine-roteador
+        container_name: filial-gw
+        hostname: filial-gw
+        privileged: true
+        volumes:
+            - ./home/filial-gw:/home
+            - ./inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeMatrizFilial:
+                ipv4_address: 192.168.70.200
+            redeFilial:
+                ipv4_address: 10.10.100.200
+
+
+    filial1:
+        image: sidneypio/alpine-roteador
+        container_name: filial1
+        hostname: filial1
+        privileged: true
+        volumes:
+            - ./home/filial1:/home
+            - ./inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeFilial:
+                ipv4_address: 10.10.100.10
+            
+
+   
+networks:
+    redeMatriz:
+        ipam:
+            config:
+            - subnet: 10.10.10.0/24
+    redeMatrizFilial:
+        ipam:
+            config:
+            - subnet: 192.168.70.0/24
+    redeFilial:
+        ipam:
+            config:
+            - subnet: 10.10.100.0/24

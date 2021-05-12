@@ -1,0 +1,54 @@
+# Ajustes na matrix-gw
+
+## Logando na matrix-gw
+docker exec -it matriz-gw bash
+
+## Teste basico de conectividade
+ping -c 3 10.10.10.10
+ping -c 3 192.168.70.200
+
+## Criando o tunnel
+ip tunnel add filial mode gre remote 192.168.70.200 local 192.168.70.100 ttl 255
+ip link set filial up
+ip addr add 10.10.10.15 dev filial
+
+## ajustando a rota
+ip route del default
+ip route add 10.10.100.0/24 dev filial
+
+
+# Ajustes na filial-gw
+
+## Logando na filial-gw
+docker exec -it filial-gw bash
+
+## Teste basico de conectividade
+ping -c 3 10.10.100.10
+ping -c 3 192.168.70.100
+
+## Criando o tunnel
+ip tunnel add matriz mode gre remote 192.168.70.100 local 192.168.70.200 ttl 255
+ip link set matriz up
+ip addr add 10.10.100.15 dev matriz
+
+## ajustando a rota
+ip route del default
+ip route add 10.10.10.0/24 dev matriz
+
+
+# Ajustes na filial1
+docker exec -it filial1 bash
+ip route del default
+ip route add default via 10.10.100.200 dev eth0
+
+# Ajustes na matriz1
+docker exec -it matriz1 bash
+ip route del default
+ip route add default via 10.10.10.100 dev eth0
+
+
+# Teste a partir da matriz1
+docker exec -it matriz1 bash
+ping 10.10.100.10 #ping para filia11
+ping 10.10.100.200 # ping para filial-gw
+

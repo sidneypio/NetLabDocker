@@ -107,7 +107,7 @@ services:
            
 
     nginx:
-        image: sidneypio/debian-nginx
+        image: sidneypio/alpine-nginx
         container_name: nginx
         hostname: nginx
         privileged: true
