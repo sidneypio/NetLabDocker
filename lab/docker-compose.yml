@@ -119,42 +119,44 @@ services:
                 ipv4_address: 10.10.100.10 
                 ipv6_address: 2001:db8:2021:100::10 
 
-    mqttServer:
+    mqtt:
         image: eclipse-mosquitto
-        container_name: mqttServer
-        hostname: mqttServer
+        container_name: mqtt
+        hostname: mqtt
         privileged: true
         volumes:
-            - ./home/mqttServer:/home
-            - ./conf/mqttServer/mosquitto.conf:/mosquitto/config/mosquitto.conf
-            - ./conf/mqttServer/data:/mosquitto/data
-            - ./conf/mqttServer/log:/mosquitto/log            
+            - ./home/mqtt:/home
+            - ./conf/mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
+            - ./conf/mqtt/data:/mosquitto/data
+            - ./conf/mqtt/log:/mosquitto/log            
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.20 
                 ipv6_address: 2001:db8:2021:100::20 
 
-    apache1:
-        image: sidneypio/debian-apache-php
-        container_name: apache1
-        hostname: apache1
+    ssh:
+        image: sidneypio/alpine-sshd
+        container_name: ssh
+        hostname: ssh
         privileged: true
         volumes:
-            - ./home/apache1:/home
-            - ./conf/apache1/html:/var/www/html
+            - ./home/ssh:/home
+            - ./conf/ssh/etc_ssh:/etc/ssh
+            - ./conf/ssh/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.30 
                 ipv6_address: 2001:db8:2021:100::30 
             
-    apache2:
-        image: sidneypio/debian-apache-php
-        container_name: apache2
-        hostname: apache2
+    ftp:
+        image: sidneypio/alpine-ftpd
+        container_name: ftp
+        hostname: ftp
         privileged: true
         volumes:
-            - ./home/apache2:/home
-            - ./conf/apache2/html:/var/www/html
+            - ./home/ftp:/home
+            - ./conf/ftp/etc_vsftpd:/etc/vsftpd
+            - ./conf/ftp/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.40 

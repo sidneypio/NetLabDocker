@@ -21,6 +21,8 @@ RUN apt update \
             nmap \
             ftp \
             mosquitto-clients \
+            ethtool mtr \
+            openssh-client \
     && apt autoremove -y
     
 

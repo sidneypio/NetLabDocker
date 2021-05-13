@@ -3,7 +3,7 @@ FROM alpine
 LABEL version="1.0"
 LABEL maintainer="sidneypio@gmail.com"
 
-RUN apk update && apk upgrade && apk add bash tcpdump htop nano  busybox-extras
+RUN apk update && apk upgrade && apk add bash tcpdump htop nano  busybox-extras ethtool mtr openssh-client
 
 CMD /usr/local/bin/inicio.sh
 

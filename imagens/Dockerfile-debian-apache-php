@@ -10,5 +10,6 @@ RUN apt update \
             htop \
             tcpdump \
             netcat telnet \
+            ethtool mtr \
     && apt autoremove -y
    

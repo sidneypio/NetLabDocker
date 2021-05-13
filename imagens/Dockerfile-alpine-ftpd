@@ -1,0 +1,10 @@
+FROM alpine
+
+LABEL version="1.0"
+LABEL maintainer="sidneypio@gmail.com"
+
+RUN apk update && apk upgrade && apk add bash tcpdump htop nano busybox-extras ethtool mtr proftpd vsftpd openssh-client ncftp lftp
+
+CMD /usr/local/bin/inicio.sh
+
+        
