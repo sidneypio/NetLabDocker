@@ -3,7 +3,7 @@
 # Nao inicializarei automaticamente para exemplificar aos alunos um problemas de roteamento
 
 echo "Ajustando rotas dos servidores"
-for s in apache1 apache2 nginx mqttServer 
+for s in ftp ssh nginx mqtt 
 do
     echo "servidor $s"
     docker exec $s ip route add 10.10.10.0/24 via 10.10.100.100 

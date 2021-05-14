@@ -114,10 +114,12 @@ services:
         volumes:
             - ./home/nginx:/home
             - ./conf/nginx/conf.d:/etc/nginx/conf.d
+            - ./conf/nginx/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.10 
                 ipv6_address: 2001:db8:2021:100::10 
+        command: ["/usr/local/bin/inicio.sh"]
 
     mqtt:
         image: eclipse-mosquitto
@@ -128,11 +130,13 @@ services:
             - ./home/mqtt:/home
             - ./conf/mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
             - ./conf/mqtt/data:/mosquitto/data
-            - ./conf/mqtt/log:/mosquitto/log            
+            - ./conf/mqtt/log:/mosquitto/log   
+            - ./conf/mqtt/inicio.sh:/usr/local/bin/inicio.sh         
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.20 
                 ipv6_address: 2001:db8:2021:100::20 
+        command: ["/usr/local/bin/inicio.sh"]
 
     ssh:
         image: sidneypio/alpine-sshd
