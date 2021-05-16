@@ -106,15 +106,15 @@ services:
                 ipv6_address: 2001:db8:2021:43::40
            
 
-    nginx:
+    web:
         image: sidneypio/alpine-nginx
-        container_name: nginx
-        hostname: nginx
+        container_name: web
+        hostname: web
         privileged: true
         volumes:
-            - ./home/nginx:/home
-            - ./conf/nginx/conf.d:/etc/nginx/conf.d
-            - ./conf/nginx/inicio.sh:/usr/local/bin/inicio.sh
+            - ./home/web:/home
+            - ./conf/web/conf.d:/etc/nginx/conf.d
+            - ./conf/web/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.10 

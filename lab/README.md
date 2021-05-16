@@ -22,4 +22,4 @@ url, links, nmap, ftp)
   * Comando de linha para configuração: vtysh
   * documentação para usuário: http://docs.frrouting.org/en/latest/
 ## Servidores
-* nginx, apache e mosquitto
+* nginx, ssh, ftp  e mqtt (mosquitto server)
