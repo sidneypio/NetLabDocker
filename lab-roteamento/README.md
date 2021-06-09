@@ -1,6 +1,7 @@
 # Laboratório de redes usando docker
 
-Topologia mais elaborada, com dois containers cliente, 2 roteadores e 3 servidores (1 servidor web (nginx), 1 servidor ftp e 1 servidor ssh)
+Topologia mais elaborada, com dois containers cliente, 4 roteadores e 4 servidores (1 nginx, 2 apache 
+e 1 mosquitto);
 
 ## Diagrama da rede
 ![Diagrama da rede](./diagrama.png "Diagrama da rede")
@@ -12,15 +13,13 @@ Topologia mais elaborada, com dois containers cliente, 2 roteadores e 3 servidor
 * cliente1 e cliente2
 * utilizam a imagem debian-cliente (debian buster com alguns pacotes como traceroute, tcpdump, netcat, c
 url, links, nmap, ftp)
-
 ## Roteadores
-* R1 e R2
+* R1, R2, R3 e R4
 * utilizam a imagem alpine-roteador (alpne com alguns pacotes tais como frr)
 * Utilizado o software frr (https://frrouting.org/)
   * utilizando rip e ripng (bem simples)
   * Arquivo de configuracao: /etc/frr/frr.conf
   * Comando de linha para configuração: vtysh
   * documentação para usuário: http://docs.frrouting.org/en/latest/
-
 ## Servidores
-* web (nginx), ftp e ssh.
+* nginx, ssh, ftp  e mqtt (mosquitto server)

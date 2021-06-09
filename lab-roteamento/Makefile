@@ -6,4 +6,4 @@ liga: ## Ativa os containers, ligando o laboratorio
 prepara:  ## Prepara os containers, mas nao coloca em execucao
 	docker-compose build
 desliga:  ## Remove containers e redes, desligando o laboratorio. Os dados nao persistentes serao perdidos
-	docker-compose down --remove-orphans
+	docker-compose down

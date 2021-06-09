@@ -43,8 +43,11 @@ services:
                 ipv4_address: 10.10.10.100  
                 ipv6_address: 2001:db8:2021:10::100
             redeR1R2: #eth1
-                ipv4_address: 10.10.50.10
-                ipv6_address: 2001:db8:2021:50::10
+                ipv4_address: 10.10.12.10
+                ipv6_address: 2001:db8:2021:12::10
+            redeR1R4: #eth2
+                ipv4_address: 10.10.14.10
+                ipv6_address: 2001:db8:2021:14::10
     R2:
         image: sidneypio/alpine-roteador
         #image: sidneypio/debian-roteador
@@ -57,11 +60,51 @@ services:
             - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeR1R2: #eth0
-                ipv4_address: 10.10.50.20
-                ipv6_address: 2001:db8:2021:50::20
-            redeServidor: #eth1
+                ipv4_address: 10.10.12.20
+                ipv6_address: 2001:db8:2021:12::20
+            redeR2R3: #eth1
+                ipv4_address: 10.10.23.20 
+                ipv6_address: 2001:db8:2021:23::20 
+
+    R3:
+        image: sidneypio/alpine-roteador
+        #image: sidneypio/debian-roteador
+        container_name: R3
+        hostname: R3
+        privileged: true
+        volumes:
+            - ./home/R3:/home
+            - ./conf/roteador/frr-rip:/etc/frr
+            - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
+        networks: 
+            redeR2R3: #eth0
+                ipv4_address: 10.10.23.30 
+                ipv6_address: 2001:db8:2021:23::30
+            redeR4R3: #eth1
+                ipv4_address: 10.10.43.30 
+                ipv6_address: 2001:db8:2021:43::30
+            redeServidor: #eth2
                 ipv4_address: 10.10.100.100 
                 ipv6_address: 2001:db8:2021:100::100
+
+    R4:
+        image: sidneypio/alpine-roteador
+        #image: sidneypio/debian-roteador
+        container_name: R4
+        hostname: R4
+        privileged: true
+        volumes:
+            - ./home/R4:/home
+            - ./conf/roteador/frr-rip:/etc/frr
+            - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeR1R4: #eth0
+                ipv4_address: 10.10.14.40 
+                ipv6_address: 2001:db8:2021:14::40  
+            redeR4R3: #eth1
+                ipv4_address: 10.10.43.40 
+                ipv6_address: 2001:db8:2021:43::40
+           
 
     web:
         image: sidneypio/alpine-nginx
@@ -78,21 +121,23 @@ services:
                 ipv6_address: 2001:db8:2021:100::10 
         command: ["/usr/local/bin/inicio.sh"]
 
-    ftp:
-        image: sidneypio/alpine-ftpd
-        container_name: ftp
-        hostname: ftp
+    mqtt:
+        image: eclipse-mosquitto
+        container_name: mqtt
+        hostname: mqtt
         privileged: true
         volumes:
-            - ./home/ftp:/home
-            - ./conf/ftp/etc_vsftpd:/etc/vsftpd
-            - ./conf/ftp/inicio.sh:/usr/local/bin/inicio.sh
+            - ./home/mqtt:/home
+            - ./conf/mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
+            - ./conf/mqtt/data:/mosquitto/data
+            - ./conf/mqtt/log:/mosquitto/log   
+            - ./conf/mqtt/inicio.sh:/usr/local/bin/inicio.sh         
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.20 
                 ipv6_address: 2001:db8:2021:100::20 
-    
-   
+        command: ["/usr/local/bin/inicio.sh"]
+
     ssh:
         image: sidneypio/alpine-sshd
         container_name: ssh
@@ -107,6 +152,19 @@ services:
                 ipv4_address: 10.10.100.30 
                 ipv6_address: 2001:db8:2021:100::30 
             
+    ftp:
+        image: sidneypio/alpine-ftpd
+        container_name: ftp
+        hostname: ftp
+        privileged: true
+        volumes:
+            - ./home/ftp:/home
+            - ./conf/ftp/etc_vsftpd:/etc/vsftpd
+            - ./conf/ftp/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.40 
+                ipv6_address: 2001:db8:2021:100::40 
 
 
 
@@ -121,8 +179,26 @@ networks:
         enable_ipv6: true
         ipam:
             config:
-            - subnet: 10.10.50.0/24
-            - subnet: "2001:db8:2021:50::/64"
+            - subnet: 10.10.12.0/24
+            - subnet: "2001:db8:2021:12::/64"
+    redeR2R3:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.23.0/24
+            - subnet: "2001:db8:2021:23::/64"
+    redeR1R4:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.14.0/24
+            - subnet: "2001:db8:2021:14::/64"
+    redeR4R3:
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 10.10.43.0/24
+            - subnet: "2001:db8:2021:43::/64"
     redeServidor:
         enable_ipv6: true
         ipam:
