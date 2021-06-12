@@ -24,8 +24,5 @@ docker exec cliente1 /usr/bin/curl -i http://[2001:db8:2021:100::10]
 echo "### curl para ftp usando IPv4"
 docker exec cliente1 /usr/bin/curl ftp://10.10.100.20/pub/arquivo.txt
 
-echo "### curl para ftp usando IPv6"
-docker exec cliente1 /usr/bin/curl ftp://[2001:db8:2021:100::20]/pub/arquivo.txt
-
 echo "### testando porta 22 no servidor ssh usando IPv4"
 docker exec cliente1 timeout 5 bash -c "</dev/tcp/10.10.100.30/22"; echo $?
