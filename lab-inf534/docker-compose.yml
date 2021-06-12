@@ -27,6 +27,18 @@ services:
                 ipv4_address: 10.10.10.20
                 ipv6_address: 2001:db8:2021:10::20
 
+    cliente3:
+        image: sidneypio/debian-cliente
+        container_name: cliente3
+        hostname: cliente3
+        privileged: true
+        volumes:
+            - ./home/cliente3:/home
+            - ./conf/cliente3/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.30
+                ipv6_address: 2001:db8:2021:10::30
 
     R1:
         image: sidneypio/alpine-roteador

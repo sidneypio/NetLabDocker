@@ -12,6 +12,7 @@ RUN apt update \
             net-tools inetutils-ping iptables \
             bind9-host dnsutils  \
             traceroute \
+            iputils-tracepath \
             htop \
             tcpdump \
             netcat telnet \

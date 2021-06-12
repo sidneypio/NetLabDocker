@@ -1,6 +1,6 @@
 # Laboratório de redes usando docker
 
-Topologia mais elaborada, com dois containers cliente, 2 roteadores e 3 servidores (1 servidor web (nginx), 1 servidor ftp e 1 servidor ssh)
+Topologia mais elaborada, com 3 containers cliente, 2 roteadores e 3 servidores (1 servidor web (nginx), 1 servidor ftp e 1 servidor ssh)
 
 ## Diagrama da rede
 ![Diagrama da rede](./diagrama.png "Diagrama da rede")
@@ -9,9 +9,8 @@ Topologia mais elaborada, com dois containers cliente, 2 roteadores e 3 servidor
 ![Plano de endereçamento](./planoEnderecamento.png "Plano de endereçamento")
 
 ## Clientes
-* cliente1 e cliente2
-* utilizam a imagem debian-cliente (debian buster com alguns pacotes como traceroute, tcpdump, netcat, c
-url, links, nmap, ftp)
+* cliente1, cliente2 e cliente3
+* utilizam a imagem debian-cliente (debian buster com alguns pacotes como traceroute, tcpdump, netcat, curl, links, nmap, ftp)
 
 ## Roteadores
 * R1 e R2
@@ -24,3 +23,5 @@ url, links, nmap, ftp)
 
 ## Servidores
 * web (nginx), ftp e ssh.
+* para o ssh, temos usuario inf500 com senha inf500
+* o ftp aceita login anonimo (usuario ftp sem senha)

@@ -11,7 +11,7 @@ echo "Arquivo teste para inf534" > ~ftp/pub/arquivo.txt
 
 # iniciando servidor vsftpd
 # https://wiki.alpinelinux.org/wiki/FTP
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf &
+#/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf &
 /usr/sbin/vsftpd /etc/vsftpd/vsftpd6.conf
 
 # nao precisa do while porque o vsftpd rodara em foreground

@@ -1,3 +1,0 @@
-
-# Exemplo de comando para se inscrever no topico novidades
-mosquitto_sub -h 10.10.100.20 -p 1883 -t novidades -d
