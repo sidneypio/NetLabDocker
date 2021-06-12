@@ -51,7 +51,7 @@ make desliga
 # Algumas informações sobre os diretórios
 
 * [imagens](https://github.com/sidneypio/NetLabDocker/tree/main/imagens#readme)
-* [lab-inicial](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inicial#readme)
-* [lab](https://github.com/sidneypio/NetLabDocker/tree/main/lab#readme)
+* [lab-inf534](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inf534#readme)
+* [lab-simples](https://github.com/sidneypio/NetLabDocker/tree/main/lab-simples#readme)
 * [lab-roteamento](https://github.com/sidneypio/NetLabDocker/tree/main/lab-roteamento#readme)
 
