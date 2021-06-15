@@ -15,10 +15,10 @@
 git clone https://github.com/sidneypio/NetLabDocker.git
 ```
 
-## Executando os containers
+## Executando os containers (pensando na disciplina inf534)
 ```
 cd NetLabDocker
-cd lab
+cd lab-inf534
 make liga
 ```
 
