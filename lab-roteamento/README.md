@@ -1,4 +1,4 @@
-# Laboratório de redes usando docker
+# Laboratório de redes usando docker - exemplo com 4 roteadores
 
 Topologia mais elaborada, com dois containers cliente, 4 roteadores e 4 servidores (1 nginx, 2 apache 
 e 1 mosquitto);

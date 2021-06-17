@@ -1,4 +1,4 @@
-# Laboratório de redes usando docker
+# Laboratório de redes para a disciplina inf534 usando docker
 
 Topologia mais elaborada, com 3 containers cliente, 2 roteadores e 3 servidores (1 servidor web (nginx), 1 servidor ftp e 1 servidor ssh)
 
