@@ -9,9 +9,10 @@ RUN apt update \
     && apt install -y\
             apt-utils aptitude \
             procps \
-            net-tools inetutils-ping iptables \
+            net-tools iptables \
             bind9-host dnsutils  \
             traceroute \
+            iputils-ping \
             iputils-tracepath \
             htop \
             tcpdump \

@@ -4,7 +4,7 @@ LABEL version="1.0"
 LABEL description="nginx com alguns pacotes"
 LABEL maintainer="sidneypio@gmail.com"
 
-RUN apk update && apk upgrade && apk add bash tcpdump htop nano busybox-extras ethtool mtr openssh-client
+RUN apk update && apk upgrade && apk add bash tcpdump htop nano busybox-extras ethtool mtr openssh-client iputils
 
 #CMD /usr/local/bin/inicio.sh
 
