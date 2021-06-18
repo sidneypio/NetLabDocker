@@ -1,7 +1,7 @@
 version: '3.9'
 services:
     cliente1:
-        image: sidneypio/debian-cliente
+        image: sidneypio/debian-inf534
         container_name: cliente1
         hostname: cliente1
         privileged: true
@@ -15,7 +15,7 @@ services:
 
 
     cliente2:
-        image: sidneypio/debian-cliente
+        image: sidneypio/debian-inf534
         container_name: cliente2
         hostname: cliente2
         privileged: true
@@ -28,7 +28,7 @@ services:
                 ipv6_address: 2001:db8:2021:10::20
 
     cliente3:
-        image: sidneypio/debian-cliente
+        image: sidneypio/debian-inf534
         container_name: cliente3
         hostname: cliente3
         privileged: true
@@ -41,8 +41,7 @@ services:
                 ipv6_address: 2001:db8:2021:10::30
 
     R1:
-        image: sidneypio/alpine-roteador
-        #image: sidneypio/debian-roteador
+        image: sidneypio/debian-inf534
         container_name: R1
         hostname: R1
         privileged: true
@@ -58,8 +57,7 @@ services:
                 ipv4_address: 10.10.50.10
                 ipv6_address: 2001:db8:2021:50::10
     R2:
-        image: sidneypio/alpine-roteador
-        #image: sidneypio/debian-roteador
+        image: sidneypio/debian-inf534
         container_name: R2
         hostname: R2
         privileged: true
@@ -76,28 +74,28 @@ services:
                 ipv6_address: 2001:db8:2021:100::100
 
     web:
-        image: sidneypio/alpine-nginx
+        image: sidneypio/debian-inf534
         container_name: web
         hostname: web
         privileged: true
         volumes:
             - ./home/web:/home
-            - ./conf/web/conf.d:/etc/nginx/conf.d
+            - ./conf/web/etc_nginx:/etc/nginx
+            - ./conf/web/var_html:/var/www/          
             - ./conf/web/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.10 
                 ipv6_address: 2001:db8:2021:100::10 
-        command: ["/usr/local/bin/inicio.sh"]
 
     ftp:
-        image: sidneypio/alpine-ftpd
+        image: sidneypio/debian-inf534
         container_name: ftp
         hostname: ftp
         privileged: true
         volumes:
             - ./home/ftp:/home
-            - ./conf/ftp/etc_vsftpd:/etc/vsftpd
+            - ./conf/ftp/etc_proftpd:/etc/proftpd
             - ./conf/ftp/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
@@ -106,7 +104,7 @@ services:
     
    
     ssh:
-        image: sidneypio/alpine-sshd
+        image: sidneypio/debian-inf534
         container_name: ssh
         hostname: ssh
         privileged: true
@@ -119,8 +117,6 @@ services:
                 ipv4_address: 10.10.100.30 
                 ipv6_address: 2001:db8:2021:100::30 
             
-
-
 
 networks:
     redeCliente:
