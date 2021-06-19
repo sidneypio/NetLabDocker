@@ -14,7 +14,6 @@ Topologia mais elaborada, com 3 containers cliente, 2 roteadores e 3 servidores 
 
 ## Roteadores
 * R1 e R2
-* utilizam a imagem alpine-roteador (alpne com alguns pacotes tais como frr)
 * Utilizado o software frr (https://frrouting.org/)
   * utilizando rip e ripng (bem simples)
   * Arquivo de configuracao: /etc/frr/frr.conf
