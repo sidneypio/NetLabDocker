@@ -1,9 +1,14 @@
 #!/bin/bash
 
+# Removendo rota default
+ip route del default
+ip -6 route del default
+
 # ajustando rota
 ip route add 10.10.10.0/24 via 10.10.100.100 
 ip route add 10.10.50.0/24 via 10.10.100.100 
 ip route add 2001:db8:2021:10::/64 via 2001:db8:2021:100::100 
+ip route add 2001:db8:2021:50::/64 via 2001:db8:2021:100::100 
 
 # iniciando servidor nginx
 /etc/init.d/nginx start
