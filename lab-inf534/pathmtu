@@ -1,0 +1,13 @@
+pathmtu
+ipv6
+em R2
+ip link set eth0 mtu 1000
+sysctl net.ipv6.conf.eth0.mtu=1280
+ip a s
+ip addr add fe80::42:aff:fe0a:3214/64 dev eth0
+ip addr add 2001:db8:2021:50::20/64 dev eth0
+
+
+em cliente1
+tcpdump -ni eth0 -w /home/pathmtu.pcap &
+ping6 -s 1400 -c 3 -M want 2001:db8:2021:100::30

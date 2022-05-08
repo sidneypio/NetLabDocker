@@ -1,6 +1,6 @@
-FROM debian:buster
+FROM debian:stable
 
-LABEL version="1.0"
+LABEL version="1.1"
 LABEL description="Imagem Debian para servidores  e roteadores em INF534 (sshd, ftpd e nginx)"
 LABEL maintainer="sidneypio@gmail.com"
 
@@ -24,36 +24,12 @@ RUN apt update \
             ftp \
             ethtool mtr \
             openssh-client \
-    && apt autoremove -y
-
-RUN apt update \
-    && apt upgrade -y\
-    && apt install -y\
-            frr frr-doc \
-    && apt autoremove -y
-
-RUN apt update \
-    && apt upgrade -y\
-    && apt install -y\
             openssh-server \
-    && apt autoremove -y
-
-RUN apt update \
-    && apt upgrade -y\
-    && apt install -y\
+            frr frr-doc \
             proftpd-basic \
-    && apt autoremove -y
-
-RUN apt update \
-    && apt upgrade -y\
-    && apt install -y\
             nginx \
-    && apt autoremove -y
-
+    && apt autoremove -y \
+    && apt clean
 
 CMD /usr/local/bin/inicio.sh
 
-
-
-    
-        
