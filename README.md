@@ -52,6 +52,5 @@ make desliga
 
 * [imagens](https://github.com/sidneypio/NetLabDocker/tree/main/imagens#readme)
 * [lab-inf534](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inf534#readme)
-* [lab-simples](https://github.com/sidneypio/NetLabDocker/tree/main/lab-simples#readme)
-* [lab-roteamento](https://github.com/sidneypio/NetLabDocker/tree/main/lab-roteamento#readme)
+
 
