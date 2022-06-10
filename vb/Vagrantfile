@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt update
     apt upgrade -y
-    apt install -y build-essential dnsutils htop tcpdump netcat links vim
+    apt install -y build-essential dnsutils htop tcpdump netcat links vim tmux
     ## Instalando pacotes auxiliares para docker
     apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
     ## Adicionando chave gpg
