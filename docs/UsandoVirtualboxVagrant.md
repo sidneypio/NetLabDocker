@@ -1,5 +1,7 @@
 # Executando o laboratório usando Virtualbox - imagem gerada com vagrant
 
+---
+
 # Quickstart:
 ## Pré-requisitos
 * virtualbox (https://www.virtualbox.org/)
@@ -21,6 +23,7 @@ vagrant up
 cd /dados/lab-inf534
 make liga
 ```
+---
 
 # Instruções mais detalhadas
 ## Pré-requisitos
