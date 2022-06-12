@@ -2,7 +2,7 @@
 
 # Quickstart:
 ## Pré-requisitos
-* virtualbox
+* virtualbox (https://www.virtualbox.org/)
 * vagrant (https://www.vagrantup.com/)
 * wireshark  (https://www.wireshark.org/)
 * opcional: git (https://git-scm.com/)
@@ -13,7 +13,7 @@
 cd NetLabDocker/vb
 vagrant up
 ```
-## Logando na VM criada pelo vagrant
+## Acessando a VM criada pelo vagrant
 * Para acessar a VM, podemos usar o comando **vagrant ssh** no mesmo diretório aonde está localizado o **VagrantFile**
 
 ## Executando o laboratório na VM
@@ -37,7 +37,13 @@ vagrant -v
 Vagrant 2.2.19
 ```
 ### Instalação do wireshark
+* Se utilizar sistemas Unix-like, pode utilizar o comando de seu sistema de gerenciamento de pacotes (apt, yum, dnf, etc) para proceder a instalação;
+* Se for outro sistema operacional, acesse o site do wireshark (https://www.wireshark.org/), clique em Downloads e escolha o arquivo baseado no seu sistema operacional.
+
+
 ### Instalação do git
+* Se utilizar sistemas Unix-like, pode utilizar o comando de seu sistema de gerenciamento de pacotes (apt, yum, dnf, etc) para proceder a instalação;
+* Acesse o site do git (https://git-scm.com/downloads) e instale o git escolhendo a versão para seu sistema operacional.
 
 ## Cópia do repositório 
 * O repositório com os arquivos é: 
@@ -58,10 +64,11 @@ vagrant up
 
 * Será criada uma imagem com 3 GB aproximadamente.
 
-## Executando o laboratório na VM
 
-## Utilizando a VM criada pelo vagrant
-* Ao invés de acessar a VM utilizando a interface do virtualbox, podemos acessar a máquina usando o ssh, executando **vagrant ssh**
+## Acessando a VM criada pelo vagrant
+* Para acessar a VM, podemos usar o comando **vagrant ssh** no mesmo diretório aonde está localizado o **VagrantFile**
+
+## Executando o laboratório na VM
 * Após logar na VM, o diretório com o laboratório estará em /dados.
 * Para executar o laboratório, após logar na máquina virtual, deve-se ir ao diretorório /dados (aonde teremos uma cópia do projeto) e depois ir em lab-inf534 e inicializar os dockers:
 ```
@@ -70,6 +77,14 @@ make liga
 ```
 * após os comandos acima, os containers serão inicializados e o ambiente estará pronto para a disciplina.
 
+## Desligando o laboratório na VM
+* Após a utilização do laboratório, os containers poderão ser desligadas, usando os comandos:
+```
+cd /dados/lab-inf534
+make desliga
+```
+
+# Comandos adicionais do vagrant:
 * Para verificar o status da VM: **vagrant status**
 * Para parar a máquina: **vagrant halt**
 * Para remover a VM: **vagrant destroy**
