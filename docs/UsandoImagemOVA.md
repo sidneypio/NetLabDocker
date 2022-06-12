@@ -1,56 +1,14 @@
-# NetLabDocker - Laboratório de redes usando docker
-* A ideia é criar um ambiente usando docker para estudo de protocolos de rede
+# Executando o laboratório usando Virtualbox - imagem imagem OVA
 
---- 
-
-# Quickstart
-## Pre-requisitos
-* git (https://git-scm.com/)
-* docker 
-  * Ambiente Linux: https://docs.docker.com/engine
-  * Ambiente Windows e Mac: https://docs.docker.com/desktop
-* docker-compose (https://docs.docker.com/compose)
-## Clonando o repositorio
-```
-git clone https://github.com/sidneypio/NetLabDocker.git
-```
-
-## Executando os containers (pensando na disciplina inf534)
-```
-cd NetLabDocker
-cd lab-inf534
-make liga
-```
-
-## Testando 
-```
-./testa-ambiente.sh
-```
-
-## Exemplo de acesso ao roteador R1
-```
-docker exec -it R1 bash
-```
-* Executando vtysh em R1:
-```
-bash-5.1# vtysh
-
-Hello, this is FRRouting (version 7.5).
-Copyright 1996-2005 Kunihiro Ishiguro, et al.
-
-R1# 
-```
-
-## Desligando o laboratório
-```
-make desliga
-```
-
----
-
-# Algumas informações sobre os diretórios
-
-* [imagens](https://github.com/sidneypio/NetLabDocker/tree/main/imagens#readme)
-* [lab-inf534](https://github.com/sidneypio/NetLabDocker/tree/main/lab-inf534#readme)
-
-
+* No seu computador local, deve-se instalar o Virtualbox (preferencialmente a última versão disponível no site do fabricante);
+* Transferir a imagem OVA disponível no link: https://drive.google.com/file/d/1wrcreQDva5Eoq3wf88J_f6xTGvbV2VF6/view?usp=sharing
+* Verifique se a rede “vboxnet0” existe no seu Virtualbox (acessando File, Host Network Manager”);
+* Importar a imagem OVA (Importar Appliance) no Virtualbox;
+* Ajustar o caminho da pasta compartilhada (Selecionar a máquina virtual inf534, “Settings” e depois “Shared Folders”);
+* Instale no seu computador o sofware wireshark  (https://www.wireshark.org/)
+* Instale um cliente de ssh em seu computador. Existem vários softwares que podem ser utilizados. Destacamos aqui alguns:
+  * para máquina com sistema operacional Linux (Unix-Like) pode ser utilizado o próprio comando de linha ssh;
+  * Putty (https://www.putty.org/);
+  * TeraTerm (https://ttssh2.osdn.jp/index.html.en);
+  * Termius (https://termius.com/);
+  * MobaXterm (https://mobaxterm.mobatek.net/).
