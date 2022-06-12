@@ -1,18 +1,32 @@
 # Executando o laboratório usando Virtualbox - imagem gerada com vagrant
 
-# Para impacientes:
-* Deve-se instalar o  virtualbox e vagrant (https://www.vagrantup.com/)
+# Quickstart:
+## Pré-requisitos
+* virtualbox
+* vagrant (https://www.vagrantup.com/)
+* wireshark  (https://www.wireshark.org/)
+* opcional: git (https://git-scm.com/)
+## Criação da VM
 * Clonar o repositório (git clone https://github.com/sidneypio/NetLabDocker)
 * Criando a VM com vagrant
-  *  cd NetLabDocker/vb
-  *  vagrant up
-* Logando na VM criada pelo vagrant: **vagrant ssh**
-* Após logar na VM, o diretório com o laboratório estará em /dados
+```
+cd NetLabDocker/vb
+vagrant up
+```
+## Logando na VM criada pelo vagrant
+* Para acessar a VM, podemos usar o comando **vagrant ssh** no mesmo diretório aonde está localizado o **VagrantFile**
+
+## Executando o laboratório na VM
+```
+cd /dados/inf534
+make liga
+```
 
 # Instruções mais detalhadas
-## Instalação do virtualbox
+## Pré-requisitos
+### Instalação do virtualbox
 * Acessar o site do projeto (https://www.virtualbox.org/) e realizar o download e instalação da última versão (versão 6.1)
-## Instalação do vagrant
+### Instalação do vagrant
 * Acessar o site do projeto (https://www.vagrantup.com/) escolher a opção Download, escolher o sistema operacional e realizar a instalação de acordo com as instruções do site. 
 * Depois da instalação, digite o comando:
 ```
@@ -22,6 +36,8 @@ vagrant -v
 ```
 Vagrant 2.2.19
 ```
+### Instalação do wireshark
+### Instalação do git
 
 ## Cópia do repositório 
 * O repositório com os arquivos é: 
@@ -30,7 +46,7 @@ https://github.com/sidneypio/NetLabDocker
   * usando o git (git clone https://github.com/sidneypio/NetLabDocker)
   * ou transferindo manualmente e depois descompactado.
 
-## Criando a VM utilizada no laboratório
+## Criação da VM
 * Para criar a VM utilizada no curso, será utilizado o arquivo **VagrantFile** com as definições necessárias;
 * Será criada uma máquina virtual no virtualbox baseada no debian 11 e com todos os pacotes para execução do projeto via docker;
 * Como os arquivos serão transferidos pela rede, esse processo pode levar um certo tempo para ser finalizado;
@@ -41,6 +57,8 @@ vagrant up
 ```
 
 * Será criada uma imagem com 3 GB aproximadamente.
+
+## Executando o laboratório na VM
 
 ## Utilizando a VM criada pelo vagrant
 * Ao invés de acessar a VM utilizando a interface do virtualbox, podemos acessar a máquina usando o ssh, executando **vagrant ssh**
