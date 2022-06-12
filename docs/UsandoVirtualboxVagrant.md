@@ -18,7 +18,7 @@ vagrant up
 
 ## Executando o laboratório na VM
 ```
-cd /dados/inf534
+cd /dados/lab-inf534
 make liga
 ```
 
