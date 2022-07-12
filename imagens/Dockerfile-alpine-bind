@@ -1,0 +1,22 @@
+FROM alpine
+
+LABEL version="1.0"
+LABEL maintainer="sidneypio@gmail.com"
+
+RUN apk update \
+    && apk upgrade \ 
+    && apk add \
+            bash \
+            tcpdump \
+            htop \
+            nano  \
+            busybox-extras \
+            ethtool \
+            mtr \
+            openssh-client \
+            iputils \
+            bind
+
+CMD /usr/local/bin/inicio.sh
+
+        

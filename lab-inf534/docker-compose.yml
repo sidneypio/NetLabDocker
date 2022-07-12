@@ -116,7 +116,22 @@ services:
             redeServidor:
                 ipv4_address: 10.10.100.30 
                 ipv6_address: 2001:db8:2021:100::30 
-            
+
+    bind:
+        image: sidneypio/alpine-bind
+        container_name: bind
+        hostname: bind
+        privileged: true
+        volumes:
+            - ./home/bind:/home
+            - ./conf/bind/named.conf:/etc/bind/named.conf
+            - ./conf/bind/resolv.conf:/etc/resolv.conf
+            - ./conf/bind/master:/etc/bind/master
+            - ./conf/bind/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.40 
+                ipv6_address: 2001:db8:2021:100::40            
 
 networks:
     redeCliente:
