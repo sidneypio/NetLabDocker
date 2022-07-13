@@ -1,7 +1,7 @@
 $TTL 86400
 
 @ IN SOA inf534.br root.inf534.br (
-  2022071101
+  2022071301
   3600
   900
   604800
@@ -9,10 +9,18 @@ $TTL 86400
 )
 
 @      IN NS bind
-bind		IN A 10.10.100.40 
+bind		IN A  10.10.10.40
+
 cliente1	IN A  10.10.10.10
 		IN AAAA 2001:db8:2021:10::10
 cliente2	IN A  10.10.10.20
 		IN AAAA 2001:db8:2021:10::20
 cliente3	IN A  10.10.10.30
 		IN AAAA 2001:db8:2021:10::30
+web		IN A  10.10.100.10
+		IN AAAA 2001:db8:2021:100::10
+ftp             IN A  10.10.100.20
+                IN AAAA 2001:db8:2021:100::20 
+ssh             IN A  10.10.100.30
+                IN AAAA 2001:db8:2021:100::30 
+
