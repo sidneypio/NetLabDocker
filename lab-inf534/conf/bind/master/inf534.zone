@@ -19,6 +19,7 @@ cliente3	IN A  10.10.10.30
 		IN AAAA 2001:db8:2021:10::30
 web		IN A  10.10.100.10
 		IN AAAA 2001:db8:2021:100::10
+www		IN CNAME web
 ftp             IN A  10.10.100.20
                 IN AAAA 2001:db8:2021:100::20 
 ssh             IN A  10.10.100.30

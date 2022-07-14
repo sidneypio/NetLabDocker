@@ -7,6 +7,7 @@ services:
         privileged: true
         volumes:
             - ./home/cliente1:/home
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/cliente1/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeCliente:
@@ -21,6 +22,7 @@ services:
         privileged: true
         volumes:
             - ./home/cliente2:/home
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/cliente2/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeCliente:
@@ -34,6 +36,7 @@ services:
         privileged: true
         volumes:
             - ./home/cliente3:/home
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/cliente3/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeCliente:
@@ -81,7 +84,8 @@ services:
         volumes:
             - ./home/web:/home
             - ./conf/web/etc_nginx:/etc/nginx
-            - ./conf/web/var_html:/var/www/          
+            - ./conf/web/var_html:/var/www/  
+            - ./conf/resolv.conf:/etc/resolv.conf        
             - ./conf/web/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
@@ -96,6 +100,7 @@ services:
         volumes:
             - ./home/ftp:/home
             - ./conf/ftp/etc_proftpd:/etc/proftpd
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/ftp/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
@@ -111,6 +116,7 @@ services:
         volumes:
             - ./home/ssh:/home
             - ./conf/ssh/etc_ssh:/etc/ssh
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/ssh/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
@@ -125,7 +131,7 @@ services:
         volumes:
             - ./home/bind:/home
             - ./conf/bind/named.conf:/etc/bind/named.conf
-            - ./conf/bind/resolv.conf:/etc/resolv.conf
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/bind/master:/etc/bind/master
             - ./conf/bind/inicio.sh:/usr/local/bin/inicio.sh
         networks:
