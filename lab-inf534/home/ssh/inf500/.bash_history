@@ -18,3 +18,4 @@ who
 last|more
 last|more
 exit
+exit

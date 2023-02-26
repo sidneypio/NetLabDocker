@@ -1,6 +1,6 @@
 FROM alpine
 
-LABEL version="1.0"
+LABEL version="2023"
 LABEL maintainer="sidneypio@gmail.com"
 
 RUN apk update \
