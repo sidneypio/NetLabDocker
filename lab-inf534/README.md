@@ -3,7 +3,7 @@
 Topologia mais elaborada, com 3 containers cliente, 2 roteadores e 4 servidores (1 servidor web (nginx), 1 servidor ftp, 1 servidor ssh e 1 servidor de dns (bind))
 
 ## Diagrama da rede
-* O diagrama da rede apresentado a seguir foi gerado pelo programa "draw.io" (https://app.diagrams.net/). O arquivo utilizado foi o diagrama.drawio 
+* O diagrama da rede apresentado a seguir foi gerado pelo programa "draw.io" (https://app.diagrams.net/), utilizando o arquivo diagrama.drawio 
 
 ![Diagrama da rede](./diagrama.drawio.png "Diagrama da rede")
 
