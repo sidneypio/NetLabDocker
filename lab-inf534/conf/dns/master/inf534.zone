@@ -1,25 +1,29 @@
 $TTL 86400
 
 @ IN SOA inf534.br root.inf534.br (
-  2022071301
+  2023040901
   3600
   900
   604800
   86400
 )
 
-@      IN NS bind
-bind		IN A  10.10.10.40
-
+@      IN NS dns
+; servidor de dns com apelido para bind
+dns		IN A  10.10.10.40
+bind		IN CNAME dns
+; clientes, tanto IPv4 como IPv6
 cliente1	IN A  10.10.10.10
 		IN AAAA 2001:db8:2021:10::10
 cliente2	IN A  10.10.10.20
 		IN AAAA 2001:db8:2021:10::20
 cliente3	IN A  10.10.10.30
 		IN AAAA 2001:db8:2021:10::30
+; servidor web (IPv4 e IPv6) e com apelido para www
 web		IN A  10.10.100.10
 		IN AAAA 2001:db8:2021:100::10
 www		IN CNAME web
+; servidores ftp e ssh
 ftp             IN A  10.10.100.20
                 IN AAAA 2001:db8:2021:100::20 
 ssh             IN A  10.10.100.30

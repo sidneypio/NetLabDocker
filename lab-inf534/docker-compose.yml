@@ -123,17 +123,17 @@ services:
                 ipv4_address: 10.10.100.30 
                 ipv6_address: 2001:db8:2021:100::30 
 
-    bind:
+    dns:
         image: sidneypio/alpine-bind
-        container_name: bind
-        hostname: bind
+        container_name: dns
+        hostname: dns
         privileged: true
         volumes:
-            - ./home/bind:/home
-            - ./conf/bind/named.conf:/etc/bind/named.conf
+            - ./home/dns:/home
+            - ./conf/dns/named.conf:/etc/bind/named.conf
             - ./conf/resolv.conf:/etc/resolv.conf
-            - ./conf/bind/master:/etc/bind/master
-            - ./conf/bind/inicio.sh:/usr/local/bin/inicio.sh
+            - ./conf/dns/master:/etc/bind/master
+            - ./conf/dns/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
                 ipv4_address: 10.10.100.40 

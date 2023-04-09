@@ -8,8 +8,8 @@ $TTL 86400
   86400
 )
 
-@      IN NS bind
-bind	IN	AAAA 2001:db8:2021:100::40
+@      IN NS dns
+dns	IN	AAAA 2001:db8:2021:100::40
 
 0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0 IN	PTR	cliente1.inf534.br.
 0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0	IN	PTR	web.inf534.br.

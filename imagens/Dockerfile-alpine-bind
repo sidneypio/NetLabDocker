@@ -1,6 +1,7 @@
 FROM alpine
 
 LABEL version="2023"
+LABEL description="Imagem Alpine para servidor de DNS da disciplina INF534"
 LABEL maintainer="sidneypio@gmail.com"
 
 RUN apk update \

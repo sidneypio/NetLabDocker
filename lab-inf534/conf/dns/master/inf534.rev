@@ -8,8 +8,8 @@ $TTL 86400
   86400
 )
 
-@      IN NS bind
-bind	IN	A	10.10.10.40
+@      IN NS dns
+dns	IN	A	10.10.10.40
 10.10	IN	PTR	cliente1.inf534.br.
 20.10	IN	PTR	cliente2.inf534.br.
 30.10	IN	PTR	cliente3.inf534.br.
