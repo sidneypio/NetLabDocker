@@ -141,21 +141,21 @@ services:
 
 networks:
     redeCliente:
-        driver: bridge
+        driver: macvlan
         enable_ipv6: true
         ipam:
             config:
             - subnet: 10.10.10.0/24
             - subnet: "2001:db8:2021:10::/64"
     redeR1R2:
-        driver: bridge
+        driver: macvlan
         enable_ipv6: true
         ipam:
             config:
             - subnet: 10.10.50.0/24
             - subnet: "2001:db8:2021:50::/64"
     redeServidor:
-        driver: bridge
+        driver: macvlan
         enable_ipv6: true
         ipam:
             config:
