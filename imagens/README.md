@@ -11,6 +11,13 @@
 * Tradicionalmente instalamos apenas 1 unico servico no docker, mas optei por fazer simplificar a compreensao. Em producao, usem apenas 1 servico, simplificando o gerenciamento e atualizações.
 * Para o servidor de DNS, criamos uma imagem utilizando como base o "Alpine Linux" e rodando apenas o "servidor bind (dns)"
 
+## Criando imagens com suporte à múltiplas arquiteturas
+
+O comando `debian-inf534-multi-arch` irá usar o [docker buildx](https://docs.docker.com/engine/reference/commandline/buildx/) para fazer o build da imagem
+para múltiplas arquiteturas de processamento (atualmente para amd64/v8 e arm64); além disso, este comando irá fazer a publicação das imagens 
+de forma automática no repositório configurado. A flag `--platform` pode ser atualizada para a inclusão de outras 
+arquiteturas caso seja necessário no futuro.
+
 # Comando para enviar para o dockerhub
 Apenas para quem deseja continuar o desenvolvimento das imagens e compartilhar com outras pessoas.
 
