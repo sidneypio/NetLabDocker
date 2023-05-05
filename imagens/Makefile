@@ -3,10 +3,13 @@ help: ## Mostrando o help
 
 all: debian-inf534 alpine-bind ## Criando todas as imagens necessarias para inf534
 
-debian-inf534: ## Criando a imagem para container da disciplina inf534 baseado em debian
-	docker build -t sidneypio/debian-inf534:latest . -f Dockerfile-debian-inf534 
+debian-inf534-multi-arch: ## Criando a imagem para container da disciplina inf534 baseado em debian para arm64/v8 e amd64
+	docker buildx build --platform linux/arm64/v8,linux/amd64 --tag sidneypio/debian-inf534:latest --push . -f Dockerfile-debian-inf534
 
-alpine-bind: ## Criando a imagem para container bind da disciplina inf534 
+debian-inf534: ## Criando a imagem para container da disciplina inf534 baseado em debian para amd64
+	docker build -t sidneypio/debian-inf534:latest . -f Dockerfile-debian-inf534
+
+alpine-bind: ## Criando a imagem para container bind da disciplina inf534
 	docker build -t sidneypio/alpine-bind:latest . -f Dockerfile-alpine-bind
 
 push: ## Envia as imagens para o Docker Hub (opcional)

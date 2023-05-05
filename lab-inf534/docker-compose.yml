@@ -54,7 +54,7 @@ services:
             - ./conf/roteador/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeCliente: # eth0
-                ipv4_address: 10.10.10.100  
+                ipv4_address: 10.10.10.100
                 ipv6_address: 2001:db8:2021:10::100
             redeR1R2: #eth1
                 ipv4_address: 10.10.50.10
@@ -73,7 +73,7 @@ services:
                 ipv4_address: 10.10.50.20
                 ipv6_address: 2001:db8:2021:50::20
             redeServidor: #eth1
-                ipv4_address: 10.10.100.100 
+                ipv4_address: 10.10.100.100
                 ipv6_address: 2001:db8:2021:100::100
 
     web:
@@ -84,13 +84,13 @@ services:
         volumes:
             - ./home/web:/home
             - ./conf/web/etc_nginx:/etc/nginx
-            - ./conf/web/var_html:/var/www/  
-            - ./conf/resolv.conf:/etc/resolv.conf        
+            - ./conf/web/var_html:/var/www/
+            - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/web/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
-                ipv4_address: 10.10.100.10 
-                ipv6_address: 2001:db8:2021:100::10 
+                ipv4_address: 10.10.100.10
+                ipv6_address: 2001:db8:2021:100::10
 
     ftp:
         image: sidneypio/debian-inf534
@@ -104,10 +104,10 @@ services:
             - ./conf/ftp/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
-                ipv4_address: 10.10.100.20 
-                ipv6_address: 2001:db8:2021:100::20 
-    
-   
+                ipv4_address: 10.10.100.20
+                ipv6_address: 2001:db8:2021:100::20
+
+
     ssh:
         image: sidneypio/debian-inf534
         container_name: ssh
@@ -120,8 +120,8 @@ services:
             - ./conf/ssh/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
-                ipv4_address: 10.10.100.30 
-                ipv6_address: 2001:db8:2021:100::30 
+                ipv4_address: 10.10.100.30
+                ipv6_address: 2001:db8:2021:100::30
 
     dns:
         image: sidneypio/alpine-bind
@@ -136,8 +136,8 @@ services:
             - ./conf/dns/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeServidor:
-                ipv4_address: 10.10.100.40 
-                ipv6_address: 2001:db8:2021:100::40            
+                ipv4_address: 10.10.100.40
+                ipv6_address: 2001:db8:2021:100::40
 
 networks:
     redeCliente:
