@@ -16,7 +16,7 @@ RUN apt update \
             iputils-tracepath \
             htop \
             tcpdump \
-            netcat telnet \
+            netcat-traditional telnet \
             links man \
             curl wget \
             nano vim \
