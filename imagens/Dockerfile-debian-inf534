@@ -1,6 +1,6 @@
 FROM debian:stable
 
-LABEL version="2023"
+LABEL version="2024"
 LABEL description="Imagem Debian para servidores  e roteadores em INF534 (sshd, ftpd e nginx)"
 LABEL maintainer="sidneypio@gmail.com"
 
