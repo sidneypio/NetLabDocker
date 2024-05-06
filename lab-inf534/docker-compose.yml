@@ -47,6 +47,8 @@ services:
         container_name: sensor
         hostname: sensor
         privileged: true
+        volumes:
+            - ./conf/sensor/inicio.sh:/usr/local/bin/inicio.sh
         networks:
             redeCliente:
                 ipv4_address: 10.10.10.50
@@ -133,7 +135,7 @@ services:
                 ipv6_address: 2001:db8:2021:100::30
 
     dns:
-        image: sidneypio/alpine-bind
+        image: sidneypio/bind-inf534
         container_name: dns
         hostname: dns
         privileged: true

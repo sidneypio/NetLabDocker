@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import paho.mqtt.client as mqtt
 import json
 import time
@@ -16,7 +18,12 @@ def simular_dados():
 
 # Função de callback chamada quando a conexão com o servidor MQTT é estabelecida
 def on_connect(client, userdata, flags, rc):
-    print("Conectado ao servidor MQTT com código de resultado: " + str(rc))
+    mensagem = "Conectado ao servidor MQTT com código de resultado: " + str(rc)
+    log_file.write(mensagem + "\n")
+    log_file.flush()  # Garante que os dados sejam escritos no arquivo imediatamente
+
+# Abertura do arquivo de log
+log_file = open("/app/sensor.log", "a")
 
 # Inicialização do cliente MQTT
 client = mqtt.Client()
@@ -33,5 +40,7 @@ while True:
     dados = {"temperatura": temperatura, "umidade": umidade}
     mensagem = json.dumps(dados)
     client.publish(topic, payload=mensagem, qos=0)
-    print("Mensagem publicada: " + mensagem)
-    time.sleep(30)  # Espera por 30 segundos antes de enviar os próximos dados
+    log_file.write("Mensagem publicada: " + mensagem + "\n")
+    log_file.flush()  # Garante que os dados sejam escritos no arquivo imediatamente
+    time.sleep(60)  # Espera por 60 segundos antes de enviar os próximos dados
+

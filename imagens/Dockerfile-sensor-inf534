@@ -6,4 +6,5 @@ COPY sensor.py .
 
 RUN pip install paho-mqtt
 
-CMD ["python", "./sensor.py"]
+CMD /usr/local/bin/inicio.sh
+
