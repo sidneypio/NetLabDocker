@@ -1,4 +1,3 @@
-version: '3.9'
 services:
     cliente1:
         image: sidneypio/debian-inf534
@@ -42,6 +41,16 @@ services:
             redeCliente:
                 ipv4_address: 10.10.10.30
                 ipv6_address: 2001:db8:2021:10::30
+
+    sensor:
+        image: sidneypio/sensor-inf534
+        container_name: sensor
+        hostname: sensor
+        privileged: true
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.50
+                ipv6_address: 2001:db8:2021:10::50
 
     R1:
         image: sidneypio/debian-inf534
@@ -138,6 +147,20 @@ services:
             redeServidor:
                 ipv4_address: 10.10.100.40
                 ipv6_address: 2001:db8:2021:100::40
+    
+    mqtt: 
+        image: eclipse-mosquitto:latest
+        container_name: mqtt
+        hostname: mqtt
+        privileged: true
+        volumes:
+            - ./conf/mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf 
+            - ./conf/mqtt/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeServidor:
+                ipv4_address: 10.10.100.50
+                ipv6_address: 2001:db8:2021:100::50
+        command: sh -c "/usr/local/bin/inicio.sh"
 
 networks:
     redeCliente:

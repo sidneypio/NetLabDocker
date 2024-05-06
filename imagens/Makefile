@@ -3,14 +3,14 @@ help: ## Mostrando o help
 
 all: debian-inf534 alpine-bind ## Criando todas as imagens necessarias para inf534
 
-debian-inf534-multi-arch: ## Criando a imagem para container da disciplina inf534 baseado em debian para arm64/v8 e amd64
-	docker buildx build --platform linux/arm64/v8,linux/amd64 --tag sidneypio/debian-inf534:latest --push . -f Dockerfile-debian-inf534
-
 debian-inf534: ## Criando a imagem para container da disciplina inf534 baseado em debian para amd64
 	docker build -t sidneypio/debian-inf534:latest . -f Dockerfile-debian-inf534
 
 alpine-bind: ## Criando a imagem para container bind da disciplina inf534
 	docker build -t sidneypio/alpine-bind:latest . -f Dockerfile-alpine-bind
+
+sensor-inf534: ## Criando a imagem para um simulador de sensor de temperatura/umidade
+	docker build -t sidneypio/sensor-inf534:latest . -f Dockerfile-sensor
 
 push: ## Envia as imagens para o Docker Hub (opcional)
 	docker login
@@ -21,3 +21,6 @@ clean: ## Remove as imagens criadas e remove imagens nao utilizadas
 	docker image rm -f sidneypio/debian-inf534
 	docker image rm -f sidneypio/alpine-bind
 	docker image prune -a -f
+
+debian-inf534-multi-arch: ## Criando a imagem para container da disciplina inf534 baseado em debian para arm64/v8 e amd64
+	docker buildx build --platform linux/arm64/v8,linux/amd64 --tag sidneypio/debian-inf534:latest --push . -f Dockerfile-debian-inf534
