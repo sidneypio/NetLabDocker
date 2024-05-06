@@ -54,6 +54,18 @@ services:
                 ipv4_address: 10.10.10.50
                 ipv6_address: 2001:db8:2021:10::50
 
+    monitor:
+        image: sidneypio/monitor-inf534
+        container_name: monitor
+        hostname: monitor
+        privileged: true
+        volumes:
+            - ./conf/monitor/inicio.sh:/usr/local/bin/inicio.sh
+        networks:
+            redeCliente:
+                ipv4_address: 10.10.10.60
+                ipv6_address: 2001:db8:2021:10::60
+
     R1:
         image: sidneypio/debian-inf534
         container_name: R1

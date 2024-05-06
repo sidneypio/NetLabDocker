@@ -12,6 +12,10 @@ bind-inf534: ## Criando a imagem para container bind da disciplina inf534
 sensor-inf534: ## Criando a imagem para um simulador de sensor de temperatura/umidade para a disciplina inf534
 	docker build -t sidneypio/sensor-inf534:latest . -f Dockerfile-sensor-inf534
 
+monitor-inf534: ## Criando a imagem para monitorar os dados de temperatura/umidade para a disciplina inf534
+	docker build -t sidneypio/monitor-inf534:latest . -f Dockerfile-monitor-inf534
+
+
 push: ## Envia as imagens para o Docker Hub (opcional)
 	docker login
 	docker push sidneypio/debian-inf534:latest
