@@ -1,7 +1,7 @@
 help: ## Mostrando o help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-all: debian-inf534 bind-inf534 sensor-inf534 monitor-inf534 '## Criando todas as imagens necessarias para inf534
+all: debian-inf534 bind-inf534 sensor-inf534 monitor-inf534 ## Criando todas as imagens necessarias para inf534
 
 debian-inf534: ## Criando a imagem para container da disciplina inf534 baseado em debian 
 	docker build -t sidneypio/debian-inf534:latest . -f Dockerfile-debian-inf534
