@@ -4,9 +4,8 @@
 ## Pre-requisitos
 * git (https://git-scm.com/)
 * docker (recomendado utilizar última versão)
-  * Ambiente Linux: https://docs.docker.com/engine
-  * Ambiente Windows e Mac: https://docs.docker.com/desktop
-* docker-compose, se estiver usando docker anterior à versão 23.0 (https://docs.docker.com/compose)
+  * Engine: https://docs.docker.com/engine
+  * Desktop: https://docs.docker.com/desktop
 ## Clonando o repositorio
 ```
 git clone https://github.com/sidneypio/NetLabDocker.git

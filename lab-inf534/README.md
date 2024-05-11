@@ -30,4 +30,4 @@ Topologia mais elaborada, com 5 containers na rede cliente, 2 roteadores e 5 ser
 * o servidor ftp aceita login anonimo (usuario ftp sem senha)
 * o servidor de dns (bind) utiliza a imagem alpine-bind 
 ### mqtt
-* utilizando imagem oficial docker do eclipse-mosquitto 
+* utilizando imagem oficial docker do eclipse-mosquitto (https://hub.docker.com/_/eclipse-mosquitto)
