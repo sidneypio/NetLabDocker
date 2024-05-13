@@ -19,3 +19,14 @@ last|more
 last|more
 exit
 exit
+w
+w
+who
+id
+ps -ef
+w
+ps -ef
+id
+w
+last
+exit

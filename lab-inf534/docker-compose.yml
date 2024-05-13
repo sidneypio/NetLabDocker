@@ -106,7 +106,6 @@ services:
         privileged: true
         volumes:
             - ./home/web:/home
-            - ./conf/web/etc_nginx:/etc/nginx
             - ./conf/web/var_html:/var/www/
             - ./conf/resolv.conf:/etc/resolv.conf
             - ./conf/web/inicio.sh:/usr/local/bin/inicio.sh
