@@ -1,11 +1,11 @@
 $TTL 86400
 
 @ IN SOA inf534.br root.inf534.br (
-  2023040901
-  3600
-  900
-  604800
-  86400
+  2024080601 ; serial
+  3600 ; Intervalo de atualização (refresh interval)
+  900 ; Intervalo de tentativa (retry interval)
+  604800 ; Expiração (expire interval)
+  86400 ; Tempo de vida padrão (minimum TTL)
 )
 
 @      IN NS dns
@@ -13,7 +13,7 @@ $TTL 86400
 dns		IN A  10.10.10.40
 bind		IN CNAME dns
 ; clientes, tanto IPv4 como IPv6
-cliente1	IN A  10.10.10.10
+cliente1 600	IN A  10.10.10.10
 		IN AAAA 2001:db8:2021:10::10
 cliente2	IN A  10.10.10.20
 		IN AAAA 2001:db8:2021:10::20

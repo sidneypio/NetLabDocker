@@ -30,3 +30,13 @@ id
 w
 last
 exit
+w
+w
+users
+user
+w
+id
+exit
+ip a s
+ps -ef
+exit
