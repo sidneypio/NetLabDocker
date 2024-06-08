@@ -1,11 +1,11 @@
-$TTL 86400
+$TTL 7200 ;  TTL padrao
 
 @ IN SOA inf534.br root.inf534.br (
   2024080601 ; serial
   3600 ; Intervalo de atualização (refresh interval)
   900 ; Intervalo de tentativa (retry interval)
   604800 ; Expiração (expire interval)
-  86400 ; Tempo de vida padrão (minimum TTL)
+  86400 ; Negative Cache TTL
 )
 
 @      IN NS dns
