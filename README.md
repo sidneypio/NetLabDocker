@@ -23,7 +23,7 @@ make liga
 
 ## Testando 
 ```
-./testa-ambiente.sh
+./testaAmbiente.sh
 ```
 
 ## Exemplo de acesso ao roteador R1
