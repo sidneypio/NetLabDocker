@@ -1,0 +1,24 @@
+FROM alpine
+
+LABEL version="2023"
+LABEL description="Imagem Alpine para servidor de DNS da disciplina INF534"
+LABEL maintainer="sidneypio@gmail.com"
+
+RUN apk update \
+    && apk upgrade \ 
+    && apk add \
+            bash \
+            tcpdump \
+            htop \
+            nano  \
+            busybox-extras \
+            ethtool \
+            mtr \
+            openssh-client \
+            iputils \
+	    bind-tools \
+            unbound
+
+CMD /usr/local/bin/inicio.sh
+
+        
