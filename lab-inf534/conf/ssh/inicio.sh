@@ -23,6 +23,9 @@ echo "inf500:inf500" |chpasswd
 #/usr/bin/ssh-keygen -A
 /etc/init.d/ssh  start
 
+# criando utmp
+touch /var/run/utmp
+
 # Removendo rota default 
 ip route del default
 ip -6 route del default

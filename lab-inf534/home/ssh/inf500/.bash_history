@@ -40,3 +40,34 @@ exit
 ip a s
 ps -ef
 exit
+who
+w
+cd /var/
+ls
+cd log
+ls
+ls -al
+cat wtmp 
+date
+ps -ef
+sudo -s
+su 
+su
+exit
+w
+who
+exit
+w
+who
+who
+exit
+w
+exit
+w
+cd /var/run
+ls -al
+touch utmp
+exit
+w
+who
+exit
